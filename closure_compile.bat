@@ -1,0 +1,2 @@
+java -jar ../closure-compiler/compiler.jar --js src/client/MouseTracker.js --js_output_file compile/client/MouseTracker.js
+java -jar ../closure-compiler/compiler.jar --js src/server/MouseViewer.js --js_output_file compile/server/MouseViewer.js

@@ -1,0 +1,1 @@
+(function(){var b=this.MouseViewer={};b.VERSION="0.0.1";b.Viewer=function(a){console.log(a);b._record=a;var d=Raphael(0,0,a.sw,a.sh),c="M"+a.p[0].x+","+a.p[0].y;for(i=1;i<a.p.length;i++)c+="L"+a.p[i].x+","+a.p[i].y,"click"==a.p[i].t&&d.circle(a.p[i].x,a.p[i].y,10).attr("fill","red");d.path(c)}})(this,document);
