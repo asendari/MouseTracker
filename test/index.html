@@ -12,7 +12,13 @@
 		<li>To print the path, press <b>p</b> key </li>
 	</ul>
 
-
+	test scriptlet : <a href="javascript:(function(){
+		var head= document.getElementsByTagName('head')[0];
+   var script= document.createElement('script');
+   script.type= 'text/javascript';
+   script.src= 'https://raw.github.com/asendari/MouseTracker/master/compile/client/MouseTracker.js';
+   head.appendChild(script);
+	})(this, document)">DRAG SCIPTLET</a>
 
 	<script src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
 	<script src="../src/client/MouseTracker.js"></script>
