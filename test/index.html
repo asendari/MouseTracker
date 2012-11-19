@@ -12,39 +12,9 @@
 		<li>To print the path, press <b>p</b> key </li>
 	</ul>
 
-	test scriptlet : <a href="javascript:(function(){
-		var head= document.getElementsByTagName('head')[0];
-   var script= document.createElement('script');
-   script.type= 'text/javascript';
-   script.src= 'https://raw.github.com/asendari/MouseTracker/master/compile/client/MouseTracker.js';
-   head.appendChild(script);
-	})(this, document)">DRAG SCIPTLET</a>
-
 	<script src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
 	<script src="../src/client/MouseTracker.js"></script>
 	<script src="../src/server/MouseViewer.js"></script>
-	<script>
-		MouseTracker.Tracker({refresh:500, debugLevel:3});
-
-		window.onkeydown = function(e){
-			// s for save
-			if(e.keyCode == 83){
-				console.log('Save record');
-				MouseTracker.Stop();
-				MouseTracker.Record.save();			
-			}else
-			// r for record
-			if(e.keyCode == 82){
-				console.log('Start Record');
-				MouseTracker.Start();
-			}else
-			// p for print
-			if(e.keyCode == 80){
-				console.log('Print Record');
-				MouseViewer.Viewer(MouseTracker._record);
-			}
-		}
-	</script>
 </body>
 
 

@@ -9,7 +9,8 @@
 	
 
 	var Viewer = MouseViewer.Viewer = function(records){
-		console.log(records);
+		if(!records) return;
+		if(records.p.length <= 0) return;
 		MouseViewer._record = records;
 
 		var paper = Raphael(0, 0, records.sw, records.sh);
@@ -24,6 +25,13 @@
 		paper.path(path);
 
 	}
+
+	window.addEventListener('keydown', function(e){
+		if(e.keyCode == 80){
+			console.log('Print Record');
+			MouseViewer.Viewer(MouseTracker._record);
+		}
+	});
 
 
 

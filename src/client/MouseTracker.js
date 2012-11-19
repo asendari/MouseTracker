@@ -6,11 +6,12 @@
 
 	MouseTracker.VERSION = '0.0.1';
 
-	
+	var refresh = MouseTracker.refresh = 500;
+	var debugLevel = MouseTracker.debugLevel = 0;
 
 	var Tracker = MouseTracker.Tracker = function(options){
-		var refresh = MouseTracker.refresh = options.refresh || 500;
-		var debugLevel = MouseTracker.debugLevel = options.debugLevel || 0;
+		refresh = MouseTracker.refresh = options.refresh || MouseTracker.refresh;
+		debugLevel = MouseTracker.debugLevel = options.debugLevel || MouseTracker.debugLevel;
 	}
 
 	var Start = MouseTracker.Start = function(){
@@ -29,8 +30,6 @@
 		window.ondblclick = null;
 		window.onmousedown = null;
 		window.onmouseup = null;
-
-		localStorage.setItem("idGenial",MouseTracker._record);
 	}
 
 
@@ -72,6 +71,20 @@
 			if(MouseTracker.debugLevel >= 1) console.log(Array.prototype.slice.call(arguments) );
 		}
 	}
+
+	window.addEventListener('keydown', function(e){
+		// s for save
+		if(e.keyCode == 83){
+			console.log('Save record');
+			MouseTracker.Stop();
+			MouseTracker.Record.save();			
+		}else
+		// r for record
+		if(e.keyCode == 82){
+			console.log('Start Record');
+			MouseTracker.Start();
+		}
+	});
 
 
 })(this, document);
