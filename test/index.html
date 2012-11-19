@@ -1,0 +1,39 @@
+<html>
+<head>
+
+</head>
+
+<body>
+
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../src/client/MouseTracker.js"></script>
+	<script src="../src/server/MouseViewer.js"></script>
+	<script>
+		MouseTracker.Tracker({refresh:500, debugLevel:3});
+
+		window.onkeydown = function(e){
+			// s for save
+			if(e.keyCode == 83){
+				console.log('Save record');
+				MouseTracker.Stop();
+				MouseTracker.Record.save();			
+			}else
+			// r for record
+			if(e.keyCode == 82){
+				console.log('Start Record');
+				MouseTracker.Start();
+			}else
+			// p for print
+			if(e.keyCode == 80){
+				console.log('Print Record');
+
+			}
+		}
+	</script>
+</body>
+
+
+</html>
