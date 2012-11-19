@@ -5,7 +5,12 @@
 
 <body>
 
-
+	<h1>UserTesting > MouseTracker > Test page</h1>
+	<ul>
+		<li>To record the path, press <b>r</b> key</li>
+		<li>To stop record and save the path, press <b>s</b> key</li>
+		<li>To print the path, press <b>p</b> key </li>
+	</ul>
 
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -13,7 +18,7 @@
 	<script src="../src/client/MouseTracker.js"></script>
 	<script src="../src/server/MouseViewer.js"></script>
 	<script>
-		MouseTracker.Tracker({refresh:100, debugLevel:3});
+		MouseTracker.Tracker({refresh:500, debugLevel:3});
 
 		window.onkeydown = function(e){
 			// s for save
