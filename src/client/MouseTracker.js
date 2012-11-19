@@ -29,6 +29,8 @@
 		window.ondblclick = null;
 		window.onmousedown = null;
 		window.onmouseup = null;
+
+		localStorage.setItem("idGenial",MouseTracker._record);
 	}
 
 
