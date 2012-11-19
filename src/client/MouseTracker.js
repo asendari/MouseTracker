@@ -14,7 +14,7 @@
 	}
 
 	var Start = MouseTracker.Start = function(){
-		MouseTracker._record = {id:'idGenial', ts:(new Date()).getTime(), p:[]};
+		MouseTracker._record = {id:'idGenial', ts:(new Date()).getTime(), p:[], sw:$(window).width(), sh:$(window).height()};
 
 		window.onmousemove = MouseTracker.MouseMoveTrack;
 		window.onclick = MouseTracker.MouseClickTrack;

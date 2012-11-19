@@ -11,8 +11,8 @@
 	var Viewer = MouseViewer.Viewer = function(records){
 		console.log(records);
 		MouseViewer._record = records;
-		// Creates canvas 320 × 200 at 10, 50
-		var paper = Raphael(0, 0, 1000, 1000);
+
+		var paper = Raphael(0, 0, records.sw, records.sh);
 
 		var path = "M"+records.p[0].x+","+records.p[0].y;
 		for(i=1; i<records.p.length; i++){
