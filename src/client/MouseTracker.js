@@ -9,8 +9,8 @@
 	
 
 	var Tracker = MouseTracker.Tracker = function(options){
-		var refresh = MouseTracker.refresh = options.refresh || 500);
-		var debugLevel = MouseTracker.debugLevel = options.debugLevel || 0);
+		var refresh = MouseTracker.refresh = options.refresh || 500;
+		var debugLevel = MouseTracker.debugLevel = options.debugLevel || 0;
 	}
 
 	var Start = MouseTracker.Start = function(){
