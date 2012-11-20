@@ -6,7 +6,7 @@
 
 	MouseTracker.VERSION = '0.0.1';
 
-	var refresh = MouseTracker.refresh = 500;
+	var refresh = MouseTracker.refresh = 50;
 	var debugLevel = MouseTracker.debugLevel = 0;
 
 	var Tracker = MouseTracker.Tracker = function(options){
@@ -30,8 +30,8 @@
 		window.ondblclick = null;
 		window.onmousedown = null;
 		window.onmouseup = null;
+		MouseTrackerDB.insertRecord(JSON.stringify(MouseTracker._record));
 	}
-
 
 
 	var MouseMoveTrack = MouseTracker.MouseMoveTrack = function(e){
@@ -59,10 +59,10 @@
 
 
 	
-	var Record = MouseTracker.Record = {
-		addPoint : function(e, type){ MouseTracker._record.p.push({ts:(new Date()).getTime()-MouseTracker._record.timestamp,x:e.pageX, y:e.pageY, t:type}); },
-		save : function(){ Debug(JSON.stringify(MouseTracker._record)); }
-	}
+	var Record = MouseTracker.Record = {};
+	Record.addPoint = function(e, type){MouseTracker._record.p.push({ts:(new Date()).getTime()-MouseTracker._record.ts,x:e.pageX, y:e.pageY, t:type}); }
+	Record.save = function(){ Debug(JSON.stringify(MouseTracker._record)); }
+	
 
 
 	var Debug = MouseTracker.Debug = function (){
@@ -85,6 +85,13 @@
 			MouseTracker.Start();
 		}
 	});
+
+	if(typeof MouseTrackerDB == 'undefined'){
+		var fileref=document.createElement('script');
+		fileref.setAttribute("type","text/javascript");
+		fileref.setAttribute("src", '../src/utils/MouseTrackerDB.js');
+		document.getElementsByTagName("head")[0].appendChild(fileref)
+	}
 
 
 })(this, document);
