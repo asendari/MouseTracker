@@ -43,4 +43,3 @@ function bgColor(){
 
 
 </html>
-javascript:(function()%7B%20addParameterToURL%20=%20%20function(_url,_key,_value)%7Bvar%20sep%20=%20'&';if%20(_url.indexOf('?')%20%3C%200)%20%7Bsep%20=%20'?';%7D%20else%20%7Bif%20(_url.slice(-1)%20==%20'&'%20%7C%7C%20_url.slice(-1)%20==%20'?')%7B%20sep='';%7D%7D%20_url%20+=%20sep%20+%20_key+'='+escape(_value);return%20_url;%7D;%20if(document.location.href.indexOf('unpackedResources=sqdebug')%20!=%20-1)%20%7Bdocument.location.href%20=%20document.location.href.replace('i18n=helpme',%20'');%7D%20%20else%20%7Bdocument.location.href%20=%20addParameterToURL(document.location.href,'i18n',%20'helpme');%7D%20%20%7D)();
