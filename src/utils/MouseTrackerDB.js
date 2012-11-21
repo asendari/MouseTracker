@@ -82,6 +82,14 @@
 		});
 	}
 
+	MouseTrackerDB.getScreenShotByRecord = function(id, renderFunc) {
+		var db =MouseTrackerDB.db;
+		db.transaction(function(tx){
+			tx.executeSql("SELECT * FROM screenshot where record_id=?", [id], renderFunc, MouseTrackerDB.onError);
+		});
+	}
+
+
 	MouseTrackerDB.open();
 	MouseTrackerDB.createTable();
 

@@ -36,6 +36,7 @@
 		window.ondblclick = null;
 		window.onmousedown = null;
 		window.onmouseup = null;
+		MouseTracker._record.tse=(new Date()).getTime();
 		MouseTrackerDB.insertRecord(JSON.stringify(MouseTracker._record));
 	}
 
@@ -70,6 +71,7 @@
 		var timestamp = (new Date()).getTime()-MouseTracker._record.ts;
 		MouseTracker._record.p.push({ts:timestamp,x:e.pageX, y:e.pageY, t:type});
 		if(type == 'click'){
+			console.log("un click à " + timestamp);
 			setTimeout(function(){
 				MouseTracker.TakeScreenShot(MouseTracker.currentId,timestamp);		
 			},250);
