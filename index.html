@@ -33,7 +33,38 @@
 
 <h1>Usage</h1>
 
-<p><a>scriptlet</a></p>
+<p>
+<ul>
+  <li>
+    You can drag'n'drop this scriptlet on your favorite bar of your browser
+    <p><a href='javascript:(function(){
+  var s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "https://github.com/asendari/MouseTracker/raw/master/src/utils/MouseTrackerDB.js");document.getElementsByTagName("head")[0].appendChild(s);
+  var s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "https://raw.github.com/asendari/MouseTracker/master/src/client/MouseTracker.js");document.getElementsByTagName("head")[0].appendChild(s);
+  var s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "https://raw.github.com/asendari/MouseTracker/master/src/server/MouseViewer.js");document.getElementsByTagName("head")[0].appendChild(s);
+  var s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "https://raw.github.com/asendari/MouseTracker/master/src/libs/panda.js");document.getElementsByTagName("head")[0].appendChild(s);
+  })(this,document);'>MouseTracker</a></p>
+  </li>
+  <li>Go to a "simple" test page</li>
+  <li>Start a record by pressing the <b>"r"</b> key</li>
+  <li>Move, click, etc... but please don't quit this page :-)</li>
+  <li>When you have finish press <b>"s"</b> key to save your records</li>
+  <li>You can replay your record by press <b>"p"</b> key and on the popin click on your last record</li>
+</ul>
+</p>
+
+<h1>Limitations</h1>
+
+<p>
+<ul>
+
+  <li>Only tested with lastest Chrome (Web SQL / Canvas)</li>
+  <li>by scriptlet it's not possible to folow a user between two pages</li>
+  <li>it's a Alpha version</li>
+
+</p>
+
+<h1>Comments ?</h1>
+<p>If you have any comments you can post it on Twitter (<a href="https://twitter.com/search/realtime?q=%23mousetracker">#mousetracker</a>) or Google Plus (<a href="https://plus.google.com/u/0/117658554401576537083/">https://plus.google.com/u/0/117658554401576537083/</a>);
       </section>
     </div>
     <footer>
