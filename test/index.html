@@ -1,6 +1,17 @@
 <html>
 <head>
-
+<script>
+var red = false;
+function bgColor(){
+	if(red){
+		document.getElementsByTagName("body")[0].setAttribute("style","background-color:white");
+		red=false;
+	}else{
+		document.getElementsByTagName("body")[0].setAttribute("style","background-color:red");
+		red=true;
+	}
+}
+</script>
 </head>
 
 <body>
@@ -12,8 +23,13 @@
 		<li>To print the path, press <b>p</b> key </li>
 	</ul>
 
+	<a href="javascript:bgColor()">
+		Test
+	</a>
 	<script src="../src/client/MouseTracker.js"></script>
+	<script src="../src/libs/panda.js"></script>
 	<script src="../src/server/MouseViewer.js"></script>
+	
 </body>
 
 

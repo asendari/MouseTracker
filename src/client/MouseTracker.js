@@ -14,9 +14,15 @@
 		debugLevel = MouseTracker.debugLevel = options.debugLevel || MouseTracker.debugLevel;
 	}
 
-	var Start = MouseTracker.Start = function(){
-		MouseTracker._record = {id:'idGenial', ts:(new Date()).getTime(), p:[], sw:document.documentElement.clientWidth	, sh:document.documentElement.clientHeight};
+	var genId = MouseTracker.genId = function(){
+		MouseTracker.currentId= "trackerId"+Math.random();
+	}
 
+	var Start = MouseTracker.Start = function(){
+		MouseTracker.genId();
+		var timestamp = (new Date()).getTime();
+		MouseTracker._record = {id:MouseTracker.currentId, ts:timestamp, p:[], sw:document.documentElement.clientWidth	, sh:document.documentElement.clientHeight};
+		MouseTracker.TakeScreenShot(MouseTracker.currentId,timestamp);
 		window.onmousemove = MouseTracker.MouseMoveTrack;
 		window.onclick = MouseTracker.MouseClickTrack;
 		window.ondblclick = MouseTracker.MouseDblClickTrack;
@@ -60,8 +66,32 @@
 
 	
 	var Record = MouseTracker.Record = {};
-	Record.addPoint = function(e, type){MouseTracker._record.p.push({ts:(new Date()).getTime()-MouseTracker._record.ts,x:e.pageX, y:e.pageY, t:type}); }
+	Record.addPoint = function(e, type){
+		var timestamp = (new Date()).getTime()-MouseTracker._record.ts;
+		MouseTracker._record.p.push({ts:timestamp,x:e.pageX, y:e.pageY, t:type});
+		if(type == 'click'){
+			setTimeout(function(){
+				MouseTracker.TakeScreenShot(MouseTracker.currentId,timestamp);		
+			},250);
+			
+		}
+	}
 	Record.save = function(){ Debug(JSON.stringify(MouseTracker._record)); }
+
+	var TakeScreenShot = MouseTracker.TakeScreenShot = function(id, timestamp){
+		window.renderer = new panda.Renderer();
+		var walker = new panda.Walker();
+		walker.onnode = function (node) {
+			renderer.renderNode(node).then(function () {
+				this.walk();
+			}, this);
+		};
+		walker.onend = function () {	
+			console.log(id, timestamp, "img size " + renderer.canvas.toDataURL().length);
+			MouseTrackerDB.insertScreenShot(renderer.canvas.toDataURL(), id, timestamp);
+		};
+		walker.walk();
+	}
 	
 
 
